@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡25 años! | Invitación</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Swiper.js for Gallery -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-content">
+        <span class="nav-logo">A & L</span>
+        <div class="nav-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#nuestra-historia">Nosotros</a>
+          <a href="#galeria">Fotos</a>
+          <a href="#detalles">Cuándo y Dónde</a>
+          <a href="#rsvp">Confirmar</a>
+        </div>
+        <!-- Hamburger Menu Button -->
+        <button class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- Mobile Overlay Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#nuestra-historia">Nosotros</a>
+        <a href="#galeria">Fotos</a>
+        <a href="#detalles">Cuándo y Dónde</a>
+        <a href="#rsvp">Confirmar</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+      <div class="hero-bg-slider">
+        <div class="hero-slide active" style="background-image: url('/hero.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('/WhatsApp Image 2025-12-27 at 11.51.40.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('/WhatsApp Image 2025-12-27 at 11.51.46 (2).jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('/WhatsApp Image 2025-12-27 at 11.51.44 (2).jpeg');"></div>
+      </div>
+      <div class="hero-content" data-aos="fade-up">
+        <p class="hero-pretitle">¡Nuestra Boda!</p>
+        <h1>Andrea & Leo</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-date">Sábado 31 de Enero, 2026</p>
+        <a href="#rsvp" class="btn-primary">Confirmar Asistencia</a>
+      </div>
+      <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="cuenta-regresiva" class="countdown-section">
+      <div class="container" data-aos="zoom-in">
+        <h3 class="countdown-title">Faltan solo...</h3>
+        <div id="countdown" class="countdown-grid">
+          <div class="countdown-item">
+            <span id="days" class="countdown-number">00</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours" class="countdown-number">00</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes" class="countdown-number">00</span>
+            <span class="countdown-label">Min</span>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds" class="countdown-number">00</span>
+            <span class="countdown-label">Seg</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invitation Text -->
+    <section id="nuestra-historia" class="invitation-text">
+      <div class="container" data-aos="fade-up">
+        <div class="ornament top"></div>
+        <h2>Unidos por el Amor</h2>
+        <p class="quote">
+          "No se trata de contar los años, sino de recordar los buenos momentos pasados y de vivir con más ganas aún los
+          que nos faltan por descubrir juntos."
+        </p>
+        <p class="main-text">
+          Queremos compartir con nuestros amigos y que formes parte de este día tan especial junto a nosotros, solo
+          necesitamos que tengas ganas de divertirte.
+        </p>
+        <div class="ornament bottom"></div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="gallery-section">
+      <div class="container">
+        <h2 data-aos="fade-up">Momentos Especiales</h2>
+        <div class="swiper-container" data-aos="zoom-in">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="/hero.jpeg" alt="Andrea & Leo 1"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.40.jpeg" alt="Momentos 2"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.42.jpeg" alt="Momentos 3"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.43.jpeg" alt="Momentos 4"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.44.jpeg" alt="Momentos 5"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.46.jpeg" alt="Momentos 6"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.46 (2).jpeg" alt="Momentos 7">
+              </div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.44 (2).jpeg" alt="Momentos 8">
+              </div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.47.jpeg" alt="Momentos 9"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.48.jpeg" alt="Momentos 10"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.58.17.jpeg" alt="Momentos 11"></div>
+              <div class="swiper-slide"><img src="/WhatsApp Image 2025-12-27 at 11.51.44 (1).jpeg" alt="Momentos 12">
+              </div>
+            </div>
+            <!-- Pagination / Navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="detalles" class="details">
+      <div class="container">
+        <div class="details-grid">
+          <div class="details-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="icon-box">✨</div>
+            <h3>Cuándo</h3>
+            <p>Sábado 31 de Enero de 2026</p>
+            <p class="time">21:30 hs</p>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Casamiento+Andrea+%26+Leo&dates=20260131T213000/20260201T050000&details=¡Los+esperamos+para+celebrar+juntos!&location=Av.+San+Martín+2151,+Caseros,+Buenos+Aires&sf=true&output=xml"
+              target="_blank" class="btn-calendar">📅 Agendar</a>
+            <div class="card-footer">¡Te esperamos puntualmente!</div>
+          </div>
+          <div class="details-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">🥂</div>
+            <h3>Dónde</h3>
+            <p>Av. San Martín 2151</p>
+            <p>Caseros, Buenos Aires</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Av.+San+Martín+2151,+Caseros,+Buenos+Aires"
+              target="_blank" class="btn-secondary">Cómo llegar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section (Dress Code & Children) -->
+    <section class="info-section">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-item" data-aos="fade-right">
+            <div class="info-icon">👗</div>
+            <h3>Dress Code</h3>
+            <p>Súper relajado y cómodo</p>
+            <small>¡Para poder saltar y bailar toda la noche!</small>
+          </div>
+          <div class="info-item" data-aos="fade-left">
+            <div class="info-icon">🚫👶</div>
+            <h3>Importante</h3>
+            <p>Sin niños</p>
+            <small>Agradecemos tu comprensión al disfrutar esta noche de adultos.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp">
+      <div class="container">
+        <div class="rsvp-card" data-aos="zoom-in">
+          <h2>Confirmar Asistencia</h2>
+          <p>Tu presencia es nuestro mejor regalo. Por favor, confirma antes del 10 de Enero.</p>
+          <form id="rsvp-form" class="rsvp-form">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Tu Nombre Completo" required />
+            </div>
+            <div class="form-group">
+              <select id="attendance" required>
+                <option value="" disabled selected>¿Vas a venir?</option>
+                <option value="yes">¡Confirmado!</option>
+                <option value="no">No podré asistir</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Confirmación</button>
+          </form>
+          <div id="rsvp-message" class="hidden">
+            <div class="success-icon">💌</div>
+            <p class="success-msg">¡Muchas gracias! Ya recibimos tu confirmación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-names">Andrea & Leo</p>
+      <p>31 • 01 • 2026</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
