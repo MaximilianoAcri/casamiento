@@ -12,20 +12,51 @@
   --font-sans: 'Montserrat', sans-serif;
   --font-script: 'Great Vibes', cursive;
   --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  --gold-glow: 0 0 30px rgba(197, 160, 89, 0.3);
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-20px) rotate(5deg);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.4;
+  }
+
+  80% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translate(100px, -100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0;
 }
 
 * {
@@ -43,6 +74,32 @@ body {
   background-color: var(--bg-light);
   color: var(--secondary);
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--grain);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.05) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .container {
@@ -281,7 +338,7 @@ body {
   font-style: italic;
   font-weight: 400;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 80px rgba(0, 0, 0, 0.3);
 }
 
 .hero-divider {
@@ -293,15 +350,16 @@ body {
 
 /* Countdown */
 .countdown-section {
-  padding: 6rem 0;
   background: var(--secondary);
-  background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('/hero.jpeg');
+  background-image: linear-gradient(rgba(20, 30, 48, 0.95), rgba(36, 59, 85, 0.95)), url('/hero.jpeg');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   color: var(--white);
+  padding: 10rem 0;
   text-align: center;
   position: relative;
+  box-shadow: inset 0 -100px 100px -100px rgba(0, 0, 0, 0.5);
 }
 
 .countdown-title {
@@ -401,14 +459,17 @@ body {
   background: transparent;
   color: var(--white);
   border-color: var(--white);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Invitation */
 .invitation-text {
   padding: 10rem 0;
-  background: var(--white);
-  background-image: radial-gradient(circle at 100% 0%, rgba(197, 160, 89, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 0% 100%, rgba(197, 160, 89, 0.03) 0%, transparent 40%);
+  background: var(--bg-light);
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(197, 160, 100, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(197, 160, 100, 0.08) 0%, transparent 40%);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -480,8 +541,9 @@ body {
 .swiper {
   width: 100%;
   height: 650px;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .swiper-slide img {
@@ -501,10 +563,24 @@ body {
 
 /* Details */
 .details {
-  padding: 8rem 0;
-  background: var(--bg-light);
-  background-image: radial-gradient(circle at 10% 10%, rgba(197, 160, 89, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 90% 90%, rgba(197, 160, 89, 0.05) 0%, transparent 50%);
+  padding: 10rem 0;
+  background: var(--secondary);
+  background-image: linear-gradient(rgba(44, 62, 80, 0.97), rgba(44, 62, 80, 0.97)), url('/hero.jpeg');
+  background-attachment: fixed;
+  position: relative;
+  box-shadow: inset 0 100px 100px -100px rgba(0, 0, 0, 0.5), inset 0 -100px 100px -100px rgba(0, 0, 0, 0.5);
+}
+
+.details::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--grain);
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .details-grid {
@@ -516,16 +592,17 @@ body {
 }
 
 .details-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 5rem 2rem;
   text-align: center;
-  border-radius: 8px;
-  border: 1px solid rgba(197, 160, 89, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  color: var(--white);
 }
 
 .details-card:hover {
@@ -542,16 +619,23 @@ body {
 
 .details-card h3 {
   font-family: var(--font-serif);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
   color: var(--primary);
+  letter-spacing: 2px;
+}
+
+.details-card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
 }
 
 .time {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--secondary);
-  margin: 1rem 0;
+  color: var(--primary);
+  margin: 1.5rem 0;
+  text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
 }
 
 .card-footer {
@@ -620,23 +704,27 @@ body {
 
 /* RSVP */
 .rsvp {
-  padding: 10rem 0;
-  background: url('/hero.jpeg') center/cover no-repeat fixed;
+  padding: 12rem 0;
+  background: var(--secondary);
+  background-image: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('/hero.jpeg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   position: relative;
   display: flex;
   justify-content: center;
 }
 
 .rsvp-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   padding: 5rem 4rem;
-  border-radius: 5px;
+  border-radius: 12px;
   max-width: 700px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(197, 160, 89, 0.2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(197, 160, 89, 0.3);
   transition: var(--transition);
 }
 
@@ -660,28 +748,43 @@ body {
   gap: 1.5rem;
 }
 
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: var(--white);
+  padding: 1.2rem 0.5rem;
+  border: none;
+  border-bottom: 2px solid rgba(197, 160, 89, 0.2);
+  background: transparent;
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.1rem;
   outline: none;
   transition: var(--transition);
+  color: var(--secondary);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: rgba(197, 160, 89, 0.02);
+}
+
+/* Light text for inputs on dark background */
+.rsvp-card .form-group input,
+.rsvp-card .form-group select {
+  color: var(--secondary);
+  /* Form card is still white-ish, but let's make it consistent */
 }
 
 .btn-submit {
   padding: 1.2rem;
-  background: var(--secondary);
+  background: var(--primary);
   color: var(--white);
   border: none;
   text-transform: uppercase;
@@ -689,10 +792,13 @@ body {
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
+  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
 }
 
 .btn-submit:hover {
-  background: var(--primary);
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(197, 160, 89, 0.4);
 }
 
 .success-icon {
@@ -714,7 +820,7 @@ body {
 .footer {
   padding: 5rem 0;
   text-align: center;
-  background: var(--white);
+  background: var(--bg-light);
 }
 
 .footer-names {
@@ -799,11 +905,15 @@ body {
   /* Details & Info */
   .details,
   .info-section {
-    padding: 4rem 1rem;
+    padding: 6rem 1.5rem;
   }
 
   .details-grid {
-    gap: 2rem;
+    gap: 2.5rem;
+  }
+
+  .details-card {
+    padding: 3rem 1.5rem;
   }
 
   /* RSVP Mobile Enhancement */
@@ -829,8 +939,29 @@ body {
   .btn-primary,
   .btn-submit {
     width: 100%;
-    /* Full width buttons for easier tap */
-    padding: 1rem;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 1.2rem;
+  }
+
+  /* Countdown Mobile Improvement */
+  .countdown-grid {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .countdown-item {
+    min-width: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .countdown-number {
+    font-size: 2.5rem;
+  }
+
+  .countdown-section {
+    padding: 4rem 1rem;
   }
 }
 

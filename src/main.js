@@ -1,3 +1,33 @@
+// Floating Particles Effect
+function createParticles() {
+  const container = document.body;
+  const particleCount = 15;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    // Random sizes and positions
+    const size = Math.random() * 5 + 2;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.top = `${Math.random() * 100}vh`;
+
+    // Subtle colors (gold-ish)
+    particle.style.background = `rgba(197, 160, 89, ${Math.random() * 0.3 + 0.1})`;
+
+    // Animation
+    const duration = Math.random() * 10 + 10;
+    const delay = Math.random() * 10;
+    particle.style.animation = `drift ${duration}s linear ${delay}s infinite`;
+
+    container.appendChild(particle);
+  }
+}
+
+createParticles();
+
 // Initialize AOS
 AOS.init({
   duration: 1200,
@@ -99,12 +129,34 @@ const updateCountdown = () => {
 const countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
 
+// Guest List Logic
+const guestListDatalist = document.getElementById('guest-list');
+
+async function loadGuestList() {
+  try {
+    const response = await fetch('./src/guests.json');
+    const guests = await response.json();
+
+    if (guestListDatalist) {
+      guests.sort().forEach(guest => {
+        const option = document.createElement('option');
+        option.value = guest;
+        guestListDatalist.appendChild(option);
+      });
+    }
+  } catch (error) {
+    console.error('Error loading guest list:', error);
+  }
+}
+
+loadGuestList();
+
 // RSVP Form Handling
 const rsvpForm = document.getElementById('rsvp-form');
 const rsvpMessage = document.getElementById('rsvp-message');
 
 // ¡REEMPLAZA ESTO CON TU URL DE GOOGLE APPS SCRIPT!
-const GOOGLE_SCRIPT_URL = 'AGREGA_TU_URL_AQUI';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzR7BNLl7jJJ7cX8QBKjmITAXNrFaAvnbcDJTth2dGBOnnPeCjU7IvCvcRQUL1QkKLZ/exec';
 
 if (rsvpForm) {
   rsvpForm.addEventListener('submit', async (e) => {

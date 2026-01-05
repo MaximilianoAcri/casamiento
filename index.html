@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>¡25 años! | Invitación</title>
   <!-- Google Fonts -->
@@ -58,7 +59,7 @@
         <div class="hero-slide" style="background-image: url('/WhatsApp Image 2025-12-27 at 11.51.44 (2).jpeg');"></div>
       </div>
       <div class="hero-content" data-aos="fade-up">
-        <p class="hero-pretitle">¡Nuestra Boda!</p>
+        <p class="hero-pretitle">¡25 años!</p>
         <h1>Andrea & Leo</h1>
         <div class="hero-divider"></div>
         <p class="hero-date">Sábado 31 de Enero, 2026</p>
@@ -193,8 +194,10 @@
           <h2>Confirmar Asistencia</h2>
           <p>Tu presencia es nuestro mejor regalo. Por favor, confirma antes del 10 de Enero.</p>
           <form id="rsvp-form" class="rsvp-form">
-            <div class="form-group">
-              <input type="text" id="name" placeholder="Tu Nombre Completo" required />
+            <div class="form-group select-wrapper">
+              <input type="text" id="name" list="guest-list" placeholder="Tu Nombre Completo" required
+                autocomplete="off" />
+              <datalist id="guest-list"></datalist>
             </div>
             <div class="form-group">
               <select id="attendance" required>
