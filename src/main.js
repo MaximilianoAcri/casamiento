@@ -134,7 +134,7 @@ const guestListDatalist = document.getElementById('guest-list');
 
 async function loadGuestList() {
   try {
-    const response = await fetch('./src/guests.json');
+    const response = await fetch('guests.json');
     const guests = await response.json();
 
     if (guestListDatalist) {
